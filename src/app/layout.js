@@ -1,18 +1,29 @@
 import "./globals.css";
-import Navbar from "@/components/Navbar";
 
+import { Nanum_Myeongjo } from "next/font/google";
+import Navbar from "@/components/Navbar";
+import { ReactLenis } from "@/utils/lenis";
+import "lenis/dist/lenis.css";
 export const metadata = {
   title: "Moroz Financial Group",
   description: "Your best financial services",
 };
 
+const nanum = Nanum_Myeongjo({
+  weight: ["400", "700", "800"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-nanum",
+});
 export default function RootLayout({ children }) {
   return (
-    <html lang='en'>
-      <body>
-        <Navbar />
-        {children}
-      </body>
+    <html lang='en' className={nanum.className}>
+      <ReactLenis root>
+        <body>
+          <Navbar />
+          {children}
+        </body>
+      </ReactLenis>
     </html>
   );
 }

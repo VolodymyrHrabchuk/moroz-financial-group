@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 // Constants for links and submenus
 const NAV_LINKS = [
@@ -38,7 +38,7 @@ const menuVariants = {
       delayChildren: 0.2, // Delay the start of the children animations
       type: "tween",
       ease: "easeOut",
-      duration: 0.2,
+      duration: 0.3,
     },
     display: "flex", // Ensure that the menu is displayed when it is open
   },
@@ -48,7 +48,7 @@ const menuVariants = {
     transition: {
       type: "tween",
       ease: "easeIn",
-      duration: 0.2,
+      duration: 0.3,
     },
     transitionEnd: {
       display: "none", // Hide the menu after it has closed
@@ -63,6 +63,11 @@ const buttonVariants = {
   closed: {
     rotate: 0,
   },
+};
+
+const mobileSubmenuVariants = {
+  open: { height: "auto", opacity: 1, transition: { duration: 0.3 } },
+  closed: { height: 0, opacity: 0, transition: { duration: 0.4 } },
 };
 
 const pathVariants = {
@@ -94,12 +99,12 @@ const Submenu = ({ links, isOpen }) => (
     variants={submenuVariants}
     initial='closed'
     animate={isOpen ? "open" : "closed"}
-    className='absolute left-[-20px] mt-4 bg-blue shadow-lg p-4 flex flex-col space-y-4 w-[120px] '
+    className='absolute left-0 md:left-[-20px] mt-4 bg-blue shadow-lg p-4 flex flex-col space-y-4 w-[120px] '
   >
-    {links.map((sublink) => (
-      <li key={sublink.href}>
-        <Link href={sublink.href} className='text-white hover:text-gray-300'>
-          {sublink.label}
+    {links.map(({ href, label }) => (
+      <li key={href}>
+        <Link href={href} className='text-white hover:text-gray-300'>
+          {label}
         </Link>
       </li>
     ))}
@@ -117,7 +122,7 @@ const Navbar = () => {
   const toggleMobileSubmenu = () => setIsMobileSubmenuOpen((prev) => !prev);
 
   return (
-    <nav className='bg-blue text-lg fixed top-0 z-50 w-full'>
+    <nav className='bg-blue text-lg fixed top-0 z-150 w-full'>
       <div className='max-w-[1400px] mx-auto h-32 flex items-center justify-between px-10 relative'>
         <div className='flex items-center'>
           <Image
@@ -151,7 +156,7 @@ const Navbar = () => {
             </motion.svg>
           </motion.button>
         </div>
-        <ul className='hidden md:flex space-x-8'>
+        <ul className='hidden md:flex space-x-8 font-bold'>
           {NAV_LINKS.map((link) => {
             const isSubmenuOpen = activeSubmenu === link.label;
             return (
@@ -185,12 +190,12 @@ const Navbar = () => {
       <motion.div
         className={`${
           isMobileMenuOpen ? "flex" : "hidden"
-        } md:hidden flex-col items-center justify-center w-full bg-blue text-white h-screen`}
+        } md:hidden flex-col items-center w-full bg-blue text-white min-h-screen overflow-auto justify-center`}
         initial='closed'
         variants={menuVariants}
         animate={isMobileMenuOpen ? "open" : "closed"}
       >
-        <ul className='flex flex-col gap-4 w-full items-center'>
+        <ul className='flex flex-col gap-4 w-full mb-40 items-center'>
           {NAV_LINKS.map((link) => (
             <li key={link.href} className='text-2xl'>
               {link.hasSubmenu ? (
@@ -204,17 +209,26 @@ const Navbar = () => {
                   </button>
 
                   {/* Submenu */}
-                  {isMobileSubmenuOpen && (
-                    <ul className='text-center mt-2 space-y-2'>
-                      {ABOUT_SUBMENU.map((sublink) => (
-                        <li key={sublink.href}>
-                          <Link href={sublink.href} className='text-white'>
-                            {sublink.label}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
+                  <AnimatePresence>
+                    {isMobileSubmenuOpen && (
+                      <motion.ul
+                        key='submenu'
+                        initial='closed'
+                        animate='open'
+                        exit='closed'
+                        variants={mobileSubmenuVariants}
+                        className='text-center mt-2 space-y-2 overflow-hidden'
+                      >
+                        {ABOUT_SUBMENU.map((sublink) => (
+                          <li key={sublink.href}>
+                            <Link href={sublink.href} className='text-white'>
+                              {sublink.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </motion.ul>
+                    )}
+                  </AnimatePresence>
                 </>
               ) : (
                 <Link
