@@ -193,16 +193,16 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <motion.div
-        className={`fixed top-32 left-0 right-0 bottom-0 z-40 flex flex-col items-center justify-center bg-blue text-white md:hidden ${
+        className={`fixed top-0 left-0 right-0 bottom-0 z-40 flex flex-col items-center justify-center bg-blue text-white md:hidden ${
           isMobileMenuOpen ? "" : "hidden"
         }`}
         initial="closed"
         variants={menuVariants}
         animate={isMobileMenuOpen ? "open" : "closed"}
       >
-        <ul className="flex flex-col gap-4 items-center">
+        <ul className="flex flex-col gap-5 items-center">
           {NAV_LINKS.map((link) => (
-            <li key={link.href} className="text-2xl">
+            <li key={link.href} className="text-3xl">
               {link.hasSubmenu ? (
                 <>
                   <button
@@ -238,7 +238,7 @@ const Navbar = () => {
               ) : (
                 <Link
                   href={link.href}
-                  className="text-white hover:text-gray-300"
+                  className=" text-white hover:text-gray-300"
                 >
                   {link.label}
                 </Link>

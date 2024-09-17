@@ -4,6 +4,7 @@ import { Nanum_Myeongjo } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import { ReactLenis } from "@/utils/lenis";
 import "lenis/dist/lenis.css";
+import Footer from "@/components/Footer";
 export const metadata = {
   title: "Moroz Financial Group",
   description: "Your best financial services",
@@ -22,6 +23,7 @@ export default function RootLayout({ children }) {
         <body>
           <Navbar />
           {children}
+          <Footer />
         </body>
       </ReactLenis>
     </html>
