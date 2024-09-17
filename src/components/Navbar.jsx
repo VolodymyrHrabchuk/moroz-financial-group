@@ -125,7 +125,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="bg-blue text-lg fixed top-0 z-50 w-full">
-        <div className="max-w-[1400px] mx-auto h-32 flex items-center justify-between px-10 relative z-50">
+        <div className="max-w-[1400px] mx-auto h-32 flex items-center justify-between px-6 relative z-50">
           <div className="flex items-center">
             <Image
               src="/logo.svg"

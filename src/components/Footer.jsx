@@ -9,7 +9,7 @@ import { IconContext } from "react-icons";
 
 const Footer = () => {
   return (
-    <footer className='max-w-[1400px] mx-auto bg-blue text-white py-10 px-10'>
+    <footer className='max-w-[1400px] mx-auto bg-blue text-white py-10 px-6'>
       <div className='max-w-screen-xl mx-auto flex items-start gap-4 flex-col md:flex-row md:gap-24'>
         {/* Left Section */}
         <div className='space-y-4'>

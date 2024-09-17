@@ -39,7 +39,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section className='max-w-[1400px] w-full mx-auto py-24 gap-10 justify-center md:flex md:items-stretch'>
+    <section className='max-w-[1400px] w-full mx-auto px-10 py-24 gap-10 justify-center md:flex md:items-stretch'>
       <div className='md:flex-1 max-w-[460px] w-full'>
         <h2 className='text-5xl font-bold mb-4'>Contact us</h2>
         <p className='text-gray-600 mb-6'>
