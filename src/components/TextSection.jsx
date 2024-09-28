@@ -2,9 +2,9 @@ import AnimatedText from "@/app/utils/AnimatedText";
 
 const phrases = [
   "We offer comprehensive accounting services",
-  "including financial planning, tax consulting,",
-  "financial statement and tax preparation, payroll",
-  "bookkeeping and many others.",
+  "including financial consulting, tax planning,",
+  "financial statement and tax preparation, payroll,",
+  "bookkeeping services and many more.",
 ];
 
 const TextSection = () => {

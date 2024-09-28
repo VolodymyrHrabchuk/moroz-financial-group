@@ -1,22 +1,35 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 // PricingCard Component
 function PricingCard({ title, price, priceNote, features }) {
   return (
-    <div className='bg-white p-6 rounded-lg shadow-lg text-center'>
-      <h3 className='text-xl font-semibold mb-4 '>{title}</h3>
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 50 }}
+      transition={{ duration: 0.5 }}
+      className='bg-white p-6 rounded-lg shadow-lg text-center'
+    >
+      <h3 className='text-xl font-semibold mb-4'>{title}</h3>
       <p className='text-2xl font-bold'>{price}</p>
       <p className='text-sm mb-4'>{priceNote}</p>
       <ul className='text-gray-600'>
         {features.map((feature, idx) => (
-          <li key={idx} className='mb-2'>
+          <motion.li
+            key={idx}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: idx * 0.1 }}
+            className='mb-2'
+          >
             {feature}
-          </li>
+          </motion.li>
         ))}
       </ul>
-    </div>
+    </motion.div>
   );
 }
 
@@ -25,15 +38,17 @@ function Tabs({ plans, activeTab, setActiveTab }) {
   return (
     <div className='flex space-x-4 mb-8 bg-gray-100 py-3 px-4 rounded-xl'>
       {plans.map((plan) => (
-        <button
+        <motion.button
           key={plan.tabName}
           className={`px-4 py-2 rounded-md ${
             activeTab === plan.tabName ? "bg-white" : "bg-transparent"
           }`}
           onClick={() => setActiveTab(plan.tabName)}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
           {plan.displayName}
-        </button>
+        </motion.button>
       ))}
     </div>
   );
@@ -66,7 +81,6 @@ export default function Pricing() {
             "Planning",
           ],
         },
-        // Add more cards as needed
       ],
     },
     {
@@ -96,19 +110,27 @@ export default function Pricing() {
             "Quarterly Reviews",
           ],
         },
-        // Add more cards as needed
       ],
     },
-    // Add more plans as needed
   ];
 
   // Get the active plan data
   const activePlan = pricingData.find((plan) => plan.tabName === activeTab);
 
   return (
-    <section className='flex flex-col items-center p-8'>
+    <motion.section
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className='flex flex-col items-center p-8'
+    >
       {/* Header */}
-      <div className='mb-14'>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+        className='mb-14'
+      >
         <h1 className='text-5xl leading-snug text-blue text-center font-bold md:text-6xl lg:text-7xl'>
           Pricing
         </h1>
@@ -116,7 +138,7 @@ export default function Pricing() {
           You can choose between a one-time service or a convenient monthly
           plan.
         </p>
-      </div>
+      </motion.div>
 
       {/* Tabs */}
       <Tabs
@@ -126,14 +148,31 @@ export default function Pricing() {
       />
 
       {/* Title */}
-      <h2 className='text-4xl font-bold mb-8 text-center'>{activePlan.title}</h2>
+      <motion.h2
+        key={activePlan.title}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className='text-4xl font-bold mb-8 text-center'
+      >
+        {activePlan.title}
+      </motion.h2>
 
       {/* Pricing Cards */}
-      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6'>
-        {activePlan.cards.map((card, index) => (
-          <PricingCard key={index} {...card} />
-        ))}
-      </div>
-    </section>
+      <AnimatePresence mode='wait'>
+        <motion.div
+          key={activeTab}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+          className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6'
+        >
+          {activePlan.cards.map((card, index) => (
+            <PricingCard key={index} {...card} />
+          ))}
+        </motion.div>
+      </AnimatePresence>
+    </motion.section>
   );
 }

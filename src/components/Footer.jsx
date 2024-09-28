@@ -9,21 +9,20 @@ import { IconContext } from "react-icons";
 
 const Footer = () => {
   return (
-    <footer className='max-w-[1400px] mx-auto bg-blue text-white py-10 px-6'>
-      <div className='max-w-screen-xl mx-auto flex items-start gap-4 flex-col md:flex-row md:gap-24'>
+    <footer className=' mx-auto bg-blue text-white py-10 px-6'>
+      <div className='max-w-[1400px]  mx-auto flex items-start gap-4 flex-col md:flex-row md:gap-24'>
         {/* Left Section */}
         <div className='space-y-4'>
-          <div className='flex items-center space-x-2'>
+          <div className='flex items-start gap-3 flex-col'>
             <Image
               src='/logo.svg'
               alt='Moroz Financial Group Logo'
-              width={180}
+              width={220}
               height={220}
             />
-          </div>
           <Link
             href='mailto:info@tmaccountant.us'
-            className='text-white opacity-75 text-sm hover:opacity-100'
+            className='text-white opacity-75 text-sm hover:opacity-100 '
           >
             info@tmaccountant.us
           </Link>
@@ -33,6 +32,7 @@ const Footer = () => {
           >
             +1 (847) 850-0085
           </Link>
+          </div>
           <div className='flex space-x-4 mt-4'>
             <Link
               href='https://www.facebook.com/YourFacebookPage'

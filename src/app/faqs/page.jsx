@@ -6,17 +6,40 @@ const FAQ = () => {
   // Sample questions and answers
   const faqData = [
     {
-      question: "What's the most frequently asked question?",
+      question: "What services do you offer?",
       answer:
-        "Answer the frequently asked question in a simple sentence, a longish paragraph, or even in a list.",
+        "We provide a full range of accounting and financial services, including individual and corporate tax preparation, bookkeeping, financial consulting, audit assistance, tax resolution, and tax planning strategies.",
     },
     {
-      question: "How about a second one?",
-      answer: "Here is the answer to the second question.",
+      question: "How do I know if I need a CPA?",
+      answer:
+        "If you're a business owner, independent contractor, or individual with complex financial situations (like investments, rental properties, or multiple income streams), a CPA can help you navigate tax laws, ensure compliance, and plan for future financial success.",
     },
     {
-      question: "And a third?",
-      answer: "Here is the answer to the third question.",
+      question:
+        "What’s the difference between tax preparation and tax planning?",
+      answer:
+        "Tax preparation involves preparing and filing your taxes for the previous year, while tax planning is a proactive approach to minimize your tax burden and maximize deductions for future filings, helping you make strategic financial decisions year-round.",
+    },
+    {
+      question: "Can you help me with IRS problems?",
+      answer:
+        "Yes, we specialize in tax resolution services, including negotiating with the IRS on your behalf, handling audits, and resolving issues like tax debts, liens, and wage garnishments.",
+    },
+    {
+      question: "Do you offer virtual consultations and services?",
+      answer:
+        "Yes, we offer virtual consultations and provide services to accommodate your busy schedule. Our team can assist you remotely, ensuring you get the same quality of service without needing to visit our office.",
+    },
+    {
+      question: "What should I bring to my initial consultation?",
+      answer:
+        "For an individual, bring your previous tax returns, income statements, and any relevant documents related to investments, assets, or deductions. Businesses should provide financial statements, bank records, and prior-year tax returns. We'll guide you on what specific documents are needed based on your situation.",
+    },
+    {
+      question: "What is your pricing structure?",
+      answer:
+        "Our pricing is based on the complexity of the services required. We offer competitive rates and provide a detailed estimate before starting any work. Contact us for a personalized quote.",
     },
   ];
 
@@ -52,19 +75,53 @@ const FAQ = () => {
     open: { rotate: 45 },
   };
 
+  // Animation variants for the FAQ item container
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.1,
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    }),
+  };
+
   return (
-    <section className='max-w-[1400px] mx-auto px-10 pt-40 pb-24'>
-      <h1 className='text-5xl font-bold mb-8 mt-24 text-center md:text-left'>
+    <motion.section
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className='max-w-[1400px] mx-auto px-10 pt-40 pb-24'
+    >
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+        className='text-5xl font-bold mb-8 mt-24 text-center md:text-left'
+      >
         Frequently Asked Questions
-      </h1>
+      </motion.h1>
       <div className='space-y-4'>
         {faqData.map((item, index) => (
-          <div key={index}>
-            <button
+          <motion.div
+            key={index}
+            variants={containerVariants}
+            initial='hidden'
+            animate='visible'
+            custom={index}
+          >
+            <motion.button
               className='flex justify-between items-center w-full p-4 focus:outline-none'
               onClick={() => toggleFAQ(index)}
               aria-expanded={openIndex === index}
               aria-controls={`faq-${index}`}
+              whileHover={{
+                scale: 1.01,
+                transition: { duration: 0.2, ease: "easeInOut" },
+              }}
             >
               <h3 className='text-xl font-medium text-left'>{item.question}</h3>
               <motion.span
@@ -75,7 +132,7 @@ const FAQ = () => {
               >
                 +
               </motion.span>
-            </button>
+            </motion.button>
             <AnimatePresence initial={false}>
               {openIndex === index && (
                 <motion.div
@@ -91,16 +148,17 @@ const FAQ = () => {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.3, delay: 0.1 }}
+                    className='py-4'
                   >
                     {item.answer}
                   </motion.p>
                 </motion.div>
               )}
             </AnimatePresence>
-          </div>
+          </motion.div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 };
 
