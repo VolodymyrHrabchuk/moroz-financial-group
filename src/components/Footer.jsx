@@ -20,40 +20,21 @@ const Footer = () => {
               width={220}
               height={220}
             />
-          <Link
-            href='mailto:info@tmaccountant.us'
-            className='text-white opacity-75 text-sm hover:opacity-100 '
-          >
-            info@tmaccountant.us
-          </Link>
-          <Link
-            href='tel:+18478500085'
-            className='text-white opacity-75 text-sm hover:opacity-100'
-          >
-            +1 (847) 850-0085
-          </Link>
+            <Link
+              href='mailto:Info@morozfinancial.com
+'
+              className='text-white opacity-75 text-sm hover:opacity-100 '
+            >
+              Info@morozfinancial.com
+            </Link>
+            <Link
+              href='tel:+18478500085'
+              className='text-white opacity-75 text-sm hover:opacity-100'
+            >
+              +1 (847) 850-0085
+            </Link>
           </div>
           <div className='flex space-x-4 mt-4'>
-            <Link
-              href='https://www.facebook.com/YourFacebookPage'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='hover:opacity-75'
-            >
-              <IconContext.Provider value={{ size: "24px" }}>
-                <FaFacebook />
-              </IconContext.Provider>
-            </Link>
-            <Link
-              href='https://www.linkedin.com/company/YourLinkedInCompany'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='hover:opacity-75'
-            >
-              <IconContext.Provider value={{ size: "24px" }}>
-                <IoLogoLinkedin />
-              </IconContext.Provider>
-            </Link>
             <Link
               href='https://www.instagram.com/YourInstagramProfile'
               target='_blank'
@@ -81,10 +62,10 @@ const Footer = () => {
           </Link>
           <p className='font-bold text-md'>Email</p>
           <Link
-            href='mailto:Dmitrymoroz@morozfinancialgroup.com'
+            href='mailto:dmitrymoroz@morozfinancial.com'
             className='text-white opacity-75 text-sm hover:opacity-100'
           >
-            Dmitrymoroz@morozfinancialgroup.com
+            dmitrymoroz@morozfinancial.com
           </Link>
           <p className='font-bold text-md'>Fax</p>
           <Link

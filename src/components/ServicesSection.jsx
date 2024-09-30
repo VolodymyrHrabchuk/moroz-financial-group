@@ -11,7 +11,7 @@ const services = [
     features: [
       "Personalized tax preparation",
       "Expertise in managing complex tax scenarios",
-      "Advice on tax-efficient retirement planning and charitable giving strategies",
+      "Advice on tax-efficient retirement planning",
       "Assistance with understanding and maximizing tax credits, deductions, and exemptions",
     ],
   },
@@ -19,7 +19,6 @@ const services = [
     title: "Corporate and Partnership Taxation",
     features: [
       "Preparation and filing of corporate and partnership tax returns",
-      "Tax planning strategies to optimize business profits and reduce liabilities",
       "Compliance with federal, state, and local tax regulations",
       "Guidance on mergers, acquisitions, and restructuring from a tax perspective",
     ],
@@ -28,7 +27,7 @@ const services = [
     title: "Bookkeeping",
     features: [
       "Accurate tracking and categorization of all financial transactions",
-      "Regular reconciliation of accounts to ensure financial data accuracy.",
+      "Detailed reconciliation of accounts to ensure financial data accuracy.",
       "Preparation of detailed financial reports",
       "Maintenance of records for tax compliance and audit readiness",
     ],
@@ -64,6 +63,7 @@ const services = [
     title: "Financial Consulting",
     features: [
       "Comprehensive financial analysis to assess business performance opportunities",
+      "Strategies to optimize business profits and reduce liabilities",
       "Customized strategies for improving cash flow, reducing costs, and maximizing profits",
       "Risk assessment and financial forecasting to support informed decision-making",
       "Assistance with mergers, acquisitions, and capital structure optimization",

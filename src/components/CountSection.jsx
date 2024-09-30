@@ -5,9 +5,9 @@ import { motion, useInView } from "framer-motion";
 import AnimatedCounter from "@/app/utils/AnimatedCounter";
 
 const counters = [
-  { value: 9, label: "Experienced accountants" },
-  { value: 5000, suffix: "+", label: "Projects" },
-  { value: 100, label: "Per Month" },
+  { value: 10, label: "Experienced accountants" },
+  { value: 10000, suffix: "+", label: "Tax returns filed" },
+  { value: 100,suffix: "%", label: "Commitment to Quality" },
 ];
 
 const CounterItem = ({ value, suffix, label, index }) => {
