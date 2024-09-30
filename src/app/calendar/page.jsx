@@ -31,9 +31,16 @@ const taxEvents = {
 const highlightedDates = [15, 31, 30];
 
 export default function TaxCalendar() {
-  const [hoveredDate, setHoveredDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(null);
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+
+  const handleDateInteraction = (date) => {
+    if (highlightedDates.includes(date)) {
+      setSelectedDate(selectedDate === date ? null : date);
+    }
+  };
+
   const renderCalendarDays = () => {
     const days = [];
     for (let i = 1; i <= 31; i++) {
@@ -54,12 +61,13 @@ export default function TaxCalendar() {
                 }
               : {}
           }
-          onHoverStart={() => setHoveredDate(i)}
-          onHoverEnd={() => setHoveredDate(null)}
+          onClick={() => handleDateInteraction(i)}
+          onHoverStart={() => handleDateInteraction(i)}
+          onHoverEnd={() => handleDateInteraction(null)}
         >
           <span className='text-sm sm:text-base'>{i}</span>
           <AnimatePresence>
-            {hoveredDate === i && taxEvents[i] && (
+            {selectedDate === i && taxEvents[i] && (
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -68,7 +76,7 @@ export default function TaxCalendar() {
                 className='absolute top-full left-1/2 transform -translate-x-1/2 z-20 bg-white p-4 rounded-lg shadow-xl text-black text-sm sm:text-base w-64 sm:w-80'
               >
                 {taxEvents[i].map((event, index) => (
-                  <div key={index} className='mb-2 '>
+                  <div key={index} className='mb-2'>
                     <p className='font-bold'>
                       {event.month} {i}
                     </p>
@@ -86,14 +94,14 @@ export default function TaxCalendar() {
 
   return (
     <main
-      className=' max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-30 mt-32'
+      className='max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-30 mt-32'
       ref={sectionRef}
     >
       <motion.h1
         initial={{ opacity: 0, y: 50 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
         transition={{ duration: 0.5 }}
-        className='text-5xl  text-center md:text-6xl lg:text-7xl leading-snug text-blue mb-0 md:mb-20 font-bold flex-1 md:mr-10'
+        className='text-5xl  text-left sm:text-center md:text-6xl lg:text-7xl leading-snug text-blue mb-10 sm:mb-20 font-bold flex-1 md:mr-10'
       >
         Tax Calendar
       </motion.h1>
