@@ -18,7 +18,7 @@ const Hero = () => {
         },
       }}
     >
-      <div className='flex flex-col items-center max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 pt-40 mt-32 translate-y-[-140px]'>
+      <div className='flex flex-col items-center max-w-[1200px] mx-auto px-2 sm:px-6 lg:px-8 pt-40 mt-32 translate-y-[-140px]'>
         <AnimatedText>
           <h1 className='text-5xl leading-snug sm:leading-snug md:leading-snug lg:leading-snug text-white text-center font-bold md:text-6xl lg:text-7xl'>
             Your Success,<br></br>Our Commitment

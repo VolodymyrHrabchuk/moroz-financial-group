@@ -6,15 +6,9 @@ import { motion, AnimatePresence, useInView } from "framer-motion";
 const taxEvents = {
   15: [
     { month: "Jan", text: "Q4 Estimate Tax Payments" },
-    {
-      month: "Apr",
-      text: "Personal Tax Return Filings - Q1 Estimate Tax Payments",
-    },
+    { month: "Apr", text: "Personal Tax Return Filings - Q1 Estimate Tax Payments" },
     { month: "Jun", text: "Q2 Estimate Tax Payments" },
-    {
-      month: "Sep",
-      text: "Business Extension Tax Returns - Q3 Estimate Tax Payments",
-    },
+    { month: "Sep", text: "Business Extension Tax Returns - Q3 Estimate Tax Payments" },
   ],
   31: [
     { month: "Jan", text: "1099/1096 - W2/W3 - Q4 Form 941 Filings" },
@@ -50,7 +44,7 @@ export default function TaxCalendar() {
           key={i}
           className={`relative aspect-square flex items-center justify-center rounded-lg cursor-pointer ${
             isHighlighted ? "border-2 border-blue-300" : "bg-white"
-          }`}
+          } ${selectedDate === i ? "bg-[#0c1c36] text-white" : ""}`}
           whileHover={
             isHighlighted
               ? {
@@ -65,7 +59,7 @@ export default function TaxCalendar() {
           onHoverStart={() => handleDateInteraction(i)}
           onHoverEnd={() => handleDateInteraction(null)}
         >
-          <span className='text-sm sm:text-base'>{i}</span>
+          <span className="text-sm sm:text-base">{i}</span>
           <AnimatePresence>
             {selectedDate === i && taxEvents[i] && (
               <motion.div
@@ -73,11 +67,11 @@ export default function TaxCalendar() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.2 }}
-                className='absolute top-full left-1/2 transform -translate-x-1/2 z-20 bg-white p-4 rounded-lg shadow-xl text-black text-sm sm:text-base w-64 sm:w-80'
+                className="absolute top-full left-1/2 transform -translate-x-1/2 z-20 bg-white p-4 rounded-lg shadow-xl text-black text-sm sm:text-base w-64 sm:w-80"
               >
                 {taxEvents[i].map((event, index) => (
-                  <div key={index} className='mb-2'>
-                    <p className='font-bold'>
+                  <div key={index} className="mb-2">
+                    <p className="font-bold">
                       {event.month} {i}
                     </p>
                     <p>{event.text}</p>
@@ -94,7 +88,7 @@ export default function TaxCalendar() {
 
   return (
     <main
-      className='max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-30 mt-32'
+      className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-30 mt-32"
       ref={sectionRef}
     >
       <motion.h1
@@ -105,14 +99,14 @@ export default function TaxCalendar() {
       >
         Tax Calendar
       </motion.h1>
-      <div className='grid grid-cols-7 gap-2 mb-2'>
+      <div className="grid grid-cols-7 gap-2 mb-2">
         {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
-          <div key={day} className='text-center font-bold'>
+          <div key={day} className="text-center font-bold">
             {day}
           </div>
         ))}
       </div>
-      <div className='grid grid-cols-7 gap-2'>{renderCalendarDays()}</div>
+      <div className="grid grid-cols-7 gap-2">{renderCalendarDays()}</div>
     </main>
   );
 }
