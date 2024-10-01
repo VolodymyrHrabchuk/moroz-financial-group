@@ -35,7 +35,7 @@ const Hero = () => {
           </AnimatedText>
         ))}
 
-        <Link href='/'>
+        <Link href='/contact'>
           <AnimatedText className='w-full p-2'>
             <motion.div
               whileHover={{
