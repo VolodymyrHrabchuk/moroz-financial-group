@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import { ReactLenis } from "@/utils/lenis";
 import "lenis/dist/lenis.css";
 import Footer from "@/components/Footer";
+import Template from "./template";
 export const metadata = {
   title: "Moroz Financial Group",
   description: "Your best financial services",
@@ -21,9 +22,11 @@ export default function RootLayout({ children }) {
     <html lang='en' className={nanum.className}>
       <ReactLenis root>
         <body>
-          <Navbar />
-          {children}
-          <Footer />
+          <Template>
+            <Navbar />
+            {children}
+            <Footer />
+          </Template>
         </body>
       </ReactLenis>
     </html>

@@ -60,13 +60,13 @@ const Footer = () => {
           >
             +1 (847) 850-0085
           </Link>
-          <p className='font-bold text-md'>Email</p>
+          {/* <p className='font-bold text-md'>Email</p>
           <Link
             href='mailto:dmitrymoroz@morozfinancial.com'
             className='text-white opacity-75 text-sm hover:opacity-100'
           >
             dmitrymoroz@morozfinancial.com
-          </Link>
+          </Link> */}
           <p className='font-bold text-md'>Fax</p>
           <Link
             href='tel:+18473055895'

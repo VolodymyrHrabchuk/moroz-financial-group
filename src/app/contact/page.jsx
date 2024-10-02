@@ -5,8 +5,7 @@ import React from "react";
 const ContactPage = () => {
   return (
     <main className='pt-40 py-24 max-w-[1200px] mx-auto'>
-      <ContactForm />
-      <div className='text-2xl mb-6 text-grey text-center'>
+      <div className='text-2xl my-6 text-grey font-bold text-center'>
         To schedule an introduction consultation, please schedule a time by
         following{" "}
         <Link
@@ -19,6 +18,7 @@ const ContactPage = () => {
         </Link>
         .
       </div>
+      <ContactForm />
     </main>
   );
 };

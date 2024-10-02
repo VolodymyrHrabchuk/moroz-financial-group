@@ -24,18 +24,18 @@ const taxEvents = {
     { month: "March", text: "S-Corp and Partnership Tax Return Filings" },
     {
       month: "April",
-      text: "Personal Tax Return Filings - Q1 Estimate Tax Payments",
+      text: "Personal Tax Return Filings \n Q1 Estimate Tax Payments",
     },
     { month: "June", text: "Q2 Estimate Tax Payments" },
     {
       month: "September",
-      text: "Business Extension Tax Returns - Q3 Estimate Tax Payments",
+      text: "Business Extension Tax Returns \n Q3 Estimate Tax Payments",
     },
     { month: "October", text: "Personal Extensions Tax Returns" },
   ],
   30: [{ month: "April", text: "Q1 Form 941" }],
   31: [
-    { month: "January", text: "1099/1096 - W2/W3 - Q4 Form 941 Filings" },
+    { month: "January", text: "1099/1096 - W2/W3 \n Q4 Form 941 Filings" },
     { month: "July", text: "Q2 Form 941" },
     { month: "October", text: "Q3 Form 941" },
   ],
@@ -105,7 +105,9 @@ export default function TaxCalendar() {
                       <p className='font-bold'>
                         {event.month} {i}
                       </p>
-                      <p>{event.text}</p>
+                      {event.text.split("\n").map((line, index) => (
+                        <p key={index}>{line}</p>
+                      ))}
                     </div>
                   ))}
                 </motion.div>
