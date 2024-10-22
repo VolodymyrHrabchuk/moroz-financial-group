@@ -8,9 +8,11 @@ import { FaInstagram } from "react-icons/fa6";
 import { IconContext } from "react-icons";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className=' mx-auto bg-blue text-white py-10 px-6'>
-      <div className='max-w-[1400px]  mx-auto flex items-start gap-4 flex-col md:flex-row md:gap-24'>
+    <footer className='mx-auto bg-blue text-white py-10 px-6'>
+      <div className='max-w-[1400px] mx-auto flex items-start gap-4 flex-col md:flex-row md:gap-24'>
         {/* Left Section */}
         <div className='space-y-4'>
           <div className='flex items-start gap-3 flex-col'>
@@ -21,8 +23,7 @@ const Footer = () => {
               height={220}
             />
             <Link
-              href='mailto:Info@morozfinancial.com
-'
+              href='mailto:Info@morozfinancial.com'
               className='text-white opacity-75 text-sm hover:opacity-100 '
             >
               Info@morozfinancial.com
@@ -60,13 +61,6 @@ const Footer = () => {
           >
             +1 (847) 850-0085
           </Link>
-          {/* <p className='font-bold text-md'>Email</p>
-          <Link
-            href='mailto:dmitrymoroz@morozfinancial.com'
-            className='text-white opacity-75 text-sm hover:opacity-100'
-          >
-            dmitrymoroz@morozfinancial.com
-          </Link> */}
           <p className='font-bold text-md'>Fax</p>
           <Link
             href='tel:+18473055895'
@@ -90,6 +84,30 @@ const Footer = () => {
             770 W Dundee Rd, Arlington Heights, IL 60004
           </p>
         </div>
+      </div>
+
+      {/* Bottom Section */}
+      <div className='max-w-[1400px] mx-auto mt-12 mb-0 text-center text-xs'>
+        <span className='text-white opacity-45'>© Moroz Financial Group {currentYear}</span>
+        <span className='mx-2 opacity-45'>|</span>
+        <Link
+          href='/privacy-policy'
+          className='text-white opacity-45 hover:opacity-100'
+        >
+          Privacy Policy
+        </Link>
+        <span className='mx-2 opacity-45'>|</span>
+        <span className='text-white opacity-45'>
+          Website developed by{" "}
+          <Link
+            href='https://vh-dev.com'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='text-white opacity-65 hover:opacity-100'
+          >
+            VH-DEV
+          </Link>
+        </span>
       </div>
     </footer>
   );

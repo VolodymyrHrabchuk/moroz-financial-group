@@ -139,7 +139,7 @@ export default function ContactForm() {
             }}
             className='text-white bg-blue w-full px-6 py-2 md:px-6 md:py-3 mt-8 rounded-xl inline-block cursor-pointer'
           >
-            Submit
+            Send Message
           </motion.button>
         </form>
       </motion.div>

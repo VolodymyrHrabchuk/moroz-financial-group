@@ -4,7 +4,7 @@ import React from "react";
 
 const ContactPage = () => {
   return (
-    <main className='pt-40 py-24 max-w-[1200px] mx-auto'>
+    <main className='pt-40  max-w-[1200px] mx-auto'>
       <div className='text-2xl my-6 text-grey font-bold text-center'>
         To schedule an introduction consultation, please schedule a time by
         following{" "}

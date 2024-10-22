@@ -71,7 +71,7 @@ const services = [
   },
 ];
 
-export default function Component() {
+const ServicesSection = () => {
   return (
     <section className='py-24'>
       <div className='max-w-[1400px] mx-auto px-4 text-center'>
@@ -104,7 +104,9 @@ export default function Component() {
       </div>
     </section>
   );
-}
+};
+
+export default ServicesSection;
 
 const AnimatedCard = ({ service, index, className }) => {
   const ref = React.useRef(null);

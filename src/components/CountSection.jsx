@@ -7,7 +7,7 @@ import AnimatedCounter from "@/app/utils/AnimatedCounter";
 const counters = [
   { value: 10, label: "Experienced accountants" },
   { value: 10000, suffix: "+", label: "Tax returns filed" },
-  { value: 100,suffix: "%", label: "Commitment to Quality" },
+  { value: 100, suffix: "%", label: "Commitment to Quality" },
 ];
 
 const CounterItem = ({ value, suffix, label, index }) => {
@@ -27,7 +27,7 @@ const CounterItem = ({ value, suffix, label, index }) => {
   );
 };
 
-export default function Component() {
+const AnimatedCounters = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
@@ -53,4 +53,6 @@ export default function Component() {
       </div>
     </section>
   );
-}
+};
+
+export default AnimatedCounters;
