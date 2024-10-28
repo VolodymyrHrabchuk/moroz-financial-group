@@ -43,7 +43,7 @@ const accountants = [
   },
   {
     name: "Assylbek Myrzagali",
-    title: "CPA",
+    title: "Financial Analyst",
     email: "assylbekmyrzagali@morozfinancial.com",
     imgSrc: "/myrzagali.webp",
   },

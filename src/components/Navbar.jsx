@@ -10,7 +10,7 @@ const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "", label: "About Us", hasSubmenu: true },
   { href: "/calendar", label: "Calendar" },
-  { href: "/exchange", label: "ClientXchange" },
+  { href: "https://www.mytaxdocs.com/", label: "ClientXchange" },
   { href: "/contact", label: "Contact Us" },
 ];
 

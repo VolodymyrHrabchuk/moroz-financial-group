@@ -1,184 +1,114 @@
-"use client";
+import React from "react";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+const priceSections = [
+  {
+    title: "Business Income Tax",
+    subtitle: "Pricing is based on gross income per year",
+    items: [
+      { range: "From $0 to $125,000", price: "$ 600" },
+      { range: "From $125,000 to $250,000", price: "$ 750" },
+      { range: "From $250,000 to $350,000", price: "$ 1,000" },
+      { range: "From $350,000 to $500,000", price: "$ 1,500" },
+      { range: "From $500,000 to $1 Million", price: "$ 1,750" },
+      { range: "From $1 Million to $2 Millions", price: "$ 2,000" },
+      { range: "From $2 Millions to $4 Millions", price: "$ 2,500" },
+      { range: "From $5 Millions", price: "+ $ 350 / Million" },
+    ],
+    itemKeyName: "range",
+  },
+  {
+    title: "Personal Income Tax",
+    subtitle:
+      "All prices start from listed below, varying by service and complexity",
+    items: [
+      { item: "Base Price", price: "$ 300" },
+      { item: "Schedule A", price: "$ 100 - 200" },
+      { item: "Schedule B", price: "$ 50 - 150" },
+      { item: "Schedule C", price: "$ 200" },
+      { item: "Schedule D", price: "$ 50 - 300" },
+      { item: "Schedule E Rentals", price: "$ 150 / each" },
+      { item: "Schedule K - 1", price: "$25 - 50 / each" },
+      { item: "Additional Forms", price: "$ 50 - 100 / each" },
+      { item: "Additional State", price: "$ 50 / each" },
+    ],
+    itemKeyName: "item",
+  },
+  {
+    title: "Bookkeeping services",
+    subtitle: "Pricing is based on gross income per year",
+    items: [
+      { item: "Monthly", price: "$ " },
+      { item: "Quarterly", price: "$ " },
+      { item: "Annually", price: "$ " },
+    ],
+    itemKeyName: "item",
+  },
+  {
+    title: "Legal Services",
+    items: [
+      { service: "Business Registration", price: "$ 600" },
+      { service: "Annual Report Filing", price: "$ 150" },
+      { service: "Change of Address", price: "$ 50" },
+      { service: "General Consultation", price: "$ 250" },
+      { service: "2553 S-Election", price: "$ 150" },
+    ],
+    itemKeyName: "service",
+  },
+  {
+    title: "Payroll Services",
+    items: [
+      { employees: "1 Employee", price: "$ 300 / Quarter" },
+      { employees: "1-5 Employees", price: "$ 450 / Quarter" },
+      { employees: "5-10 Employees", price: "$ 750 / Quarter" },
+    ],
+    itemKeyName: "employees",
+  },
+  {
+    title: "Tax Planning",
+    items: [{ service: "Tax Strategy Consultation", price: "$ 500" }],
+    itemKeyName: "service",
+  },
+  {
+    title: "Tax Resolutions",
+    items: [
+      { service: "Audit Representation", price: "Starting at $ 3,000" },
+      { service: "Penalty Abatement", price: "% 20 from Penalty Amount" },
+    ],
+    itemKeyName: "service",
+  },
+];
 
-import ContactForm from "./ContactForm";
+const PriceSection = ({ title, subtitle, items, itemKeyName }) => (
+  <section className='mb-12'>
+    <h2 className='text-3xl font-normal text-center mb-2 relative'>
+      <span className='px-4 bg-white relative z-10 text-xl lg:text-4xl'>
+        {title}
+      </span>
+      <div className='absolute w-full h-px bg-gray-300 top-1/2 left-0 -z-10'></div>
+    </h2>
+    {subtitle && (
+      <p className='text-sm lg:text-md font-normal text-center mb-6'>
+        {subtitle}
+      </p>
+    )}
+    <div className='space-y-2'>
+      {items.map((item, index) => (
+        <div key={index} className='flex pt-2 justify-between'>
+          <span className='text-sm lg:text-xl '>{item[itemKeyName]}</span>
+          <span className='text-sm lg:text-xl'>{item.price}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+);
 
-// PricingCard Component
-// function PricingCard({ title, price, priceNote, features }) {
-//   return (
-//     <motion.div
-//       initial={{ opacity: 0, y: 50 }}
-//       animate={{ opacity: 1, y: 0 }}
-//       exit={{ opacity: 0, y: 50 }}
-//       transition={{ duration: 0.5 }}
-//       className='bg-white p-6 rounded-lg shadow-lg text-center'
-//     >
-//       <h3 className='text-xl font-semibold mb-4'>{title}</h3>
-//       <p className='text-2xl font-bold'>{price}</p>
-//       <p className='text-sm mb-4'>{priceNote}</p>
-//       <ul className='text-gray-600'>
-//         {features.map((feature, idx) => (
-//           <motion.li
-//             key={idx}
-//             initial={{ opacity: 0, x: -20 }}
-//             animate={{ opacity: 1, x: 0 }}
-//             transition={{ delay: idx * 0.1 }}
-//             className='mb-2'
-//           >
-//             {feature}
-//           </motion.li>
-//         ))}
-//       </ul>
-//     </motion.div>
-//   );
-// }
-
-// Tabs Component
-// function Tabs({ plans, activeTab, setActiveTab }) {
-//   return (
-//     <div className='flex space-x-4 mb-8 bg-gray-100 py-3 px-4 rounded-xl'>
-//       {plans.map((plan) => (
-//         <motion.button
-//           key={plan.tabName}
-//           className={`px-4 py-2 rounded-md ${
-//             activeTab === plan.tabName ? "bg-white" : "bg-transparent"
-//           }`}
-//           onClick={() => setActiveTab(plan.tabName)}
-//           whileHover={{ scale: 1.05 }}
-//           whileTap={{ scale: 0.95 }}
-//         >
-//           {plan.displayName}
-//         </motion.button>
-//       ))}
-//     </div>
-//   );
-// }
-
-export default function Pricing() {
-  // const [activeTab, setActiveTab] = useState("oneTime");
-
-  // Updated pricing data structure
-  // const pricingData = [
-  //   {
-  //     tabName: "oneTime",
-  //     displayName: "One-time Service",
-  //     title: "Tax Planning And Preparation",
-  //     cards: [
-  //       {
-  //         title: "Individual Tax Return",
-  //         price: "$300",
-  //         priceNote: "starting",
-  //         features: ["Consultation", "Tax Filing", "Support", "Advice"],
-  //       },
-  //       {
-  //         title: "Business Tax Return",
-  //         price: "$500",
-  //         priceNote: "starting",
-  //         features: [
-  //           "Business Consultation",
-  //           "Tax Filing",
-  //           "Audit Support",
-  //           "Planning",
-  //         ],
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     tabName: "monthly",
-  //     displayName: "Monthly Plans",
-  //     title: "Tax Planning And Preparation",
-  //     cards: [
-  //       {
-  //         title: "Individual Plan",
-  //         price: "$500",
-  //         priceNote: "per month",
-  //         features: [
-  //           "Monthly Consultation",
-  //           "Tax Optimization",
-  //           "Priority Support",
-  //           "Annual Review",
-  //         ],
-  //       },
-  //       {
-  //         title: "Business Plan",
-  //         price: "$700",
-  //         priceNote: "per month",
-  //         features: [
-  //           "Monthly Business Consultation",
-  //           "Strategic Tax Planning",
-  //           "Audit Assistance",
-  //           "Quarterly Reviews",
-  //         ],
-  //       },
-  //     ],
-  //   },
-  // ];
-
-  // Get the active plan data
-  // const activePlan = pricingData.find((plan) => plan.tabName === activeTab);
-
+const PriceSectons = () => {
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className='flex flex-col items-center p-8'
-    >
-      {/* Header */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2, duration: 0.5 }}
-        className='mb-14'
-      >
-        <h1 className='text-5xl leading-normal lg:leading-snug text-blue text-center font-bold md:text-4xl lg:text-6xl max-w-[800px] mx-auto'>
-          Custom Pricing Tailored to Your Needs
-        </h1>
-        <p className='text-xl md:text-2xl text-grey text-center leading-snug mt-2 max-w-[1100px] mx-auto'>
-          Every client is unique, and so are their financial situations.
-          That&apos;s why we offer personalized pricing based on your specific
-          needs and the complexity of your requirements.
-          <br />
-          Contact us today to learn more and receive a customized proposal.
-        </p>
-      </motion.div>
-      <ContactForm />
-
-      {/* Tabs */}
-      {/* <Tabs
-        plans={pricingData}
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-      /> */}
-
-      {/* Title */}
-      {/* <motion.h2
-        key={activePlan.title}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className='text-4xl font-bold mb-8 text-center'
-      >
-        {activePlan.title}
-      </motion.h2> */}
-
-      {/* Pricing Cards */}
-      {/* <AnimatePresence mode='wait'> */}
-      {/* <motion.div
-          key={activeTab}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-          className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6'
-        >
-          {activePlan.cards.map((card, index) => (
-            <PricingCard key={index} {...card} />
-          ))}
-        </motion.div> */}
-      {/* </AnimatePresence> */}
-    </motion.section>
+    <div className='max-w-2xl mx-auto pt-8 px-4 lg:px-8'>
+      {priceSections.map((section, index) => (
+        <PriceSection key={index} {...section} />
+      ))}
+    </div>
   );
-}
+};
+export default PriceSectons;
