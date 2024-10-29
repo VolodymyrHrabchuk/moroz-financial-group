@@ -2,8 +2,6 @@
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-import { IoLogoLinkedin } from "react-icons/io5";
-import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa6";
 import { IconContext } from "react-icons";
 
@@ -46,6 +44,7 @@ const Footer = () => {
                 <FaInstagram />
               </IconContext.Provider>
             </Link>
+            {/* Add other social icons here if needed */}
           </div>
         </div>
 
@@ -73,15 +72,15 @@ const Footer = () => {
         {/* Right Section */}
         <div className='flex flex-col md:flex-row md:items-center gap-6 text-center md:text-left md:ml-12'>
           <iframe
-            src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3154.412378672214!2d-87.98168068469316!3d42.148974979200175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fb359f15f70a1%3A0x26075b422dfeaf4e!2s770%20W%20Dundee%20Rd%2C%20Arlington%20Heights%2C%20IL%2060004%2C%20USA!5e0!3m2!1sen!2sin!4v1663242288941!5m2!1sen!2sin'
-            className='rounded-md w-full h-full md:w-2/3 md:h-64'
-            style={{ border: 0, pointerEvents: "none" }}
+            src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.815323376733!2d-87.62780048459373!3d41.88288927922274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd3306b1b2a7b%3A0x9c5e5d9f8c8e4b1d!2s200%20N%20Green%20St%2C%20Chicago%2C%20IL%2060607%2C%20USA!5e0!3m2!1sen!2sin!4v1663242288941!5m2!1sen!2sin'
+            className='rounded-md w-full h-64 md:w-2/3 md:h-64'
+            style={{ border: 0 }}
             allowFullScreen={true}
             loading='lazy'
             referrerPolicy='no-referrer-when-downgrade'
           ></iframe>
           <p className='text-left font-bold text-md text-white'>
-            770 W Dundee Rd, Arlington Heights, IL 60004
+            200 N Green St, Suite 521, Chicago, IL 60607
           </p>
         </div>
       </div>

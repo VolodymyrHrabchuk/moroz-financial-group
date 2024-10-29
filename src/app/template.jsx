@@ -27,22 +27,20 @@ const Template = ({ children }) => {
 
   return (
     <>
-
       <AnimatePresence>
         {isCurtainVisible && (
           <motion.div
-            initial="initial"
-            animate="animate"
-            exit="exit"
+            initial='initial'
+            animate='animate'
+            exit='exit'
             variants={curtainVariants}
             transition={{ ease: "easeInOut", duration: 1 }} // Adjust the duration as needed
-            className="fixed top-0 left-0 w-screen h-screen bg-blue z-[9999] flex items-center justify-center"
+            className='fixed top-0 left-0 w-screen h-screen bg-blue z-[9999] flex items-center justify-center'
           >
-
             <motion.img
-              src="/logo.svg"
-              alt="Logo"
-              className="w-36 h-36" // Adjust size as needed
+              src='/logo.svg'
+              alt='Logo'
+              className='w-36 h-36 translate-y-3' // Adjust size as needed
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1 }}
@@ -56,7 +54,7 @@ const Template = ({ children }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ ease: "easeInOut", duration: 0.5, delay: 1 }} // Delay to ensure it appears after the curtain
-        className="min-h-screen"
+        className='min-h-screen'
       >
         {children}
       </motion.div>
