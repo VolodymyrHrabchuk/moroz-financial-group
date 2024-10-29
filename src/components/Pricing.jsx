@@ -94,19 +94,19 @@ const priceSections = [
   },
 ];
 
-const formatPrice = (price) => {
-  if (price.includes("-")) {
-    const [start, end] = price.split("-").map((p) => p.trim());
-    return (
-      <span className='flex flex-col lg:flex-row lg:items-center'>
-        <span>{start}</span>
-        <span className=' lg:inline mx-1'>-</span>
-        <span>{end}</span>
-      </span>
-    );
-  }
-  return price;
-};
+// const formatPrice = (price) => {
+//   if (price.includes("-")) {
+//     const [start, end] = price.split("-").map((p) => p.trim());
+//     return (
+//       <span className='flex flex-col lg:flex-row lg:items-center'>
+//         <span>{start}</span>
+//         <span className=' lg:inline mx-1'>-</span>
+//         <span>{end}</span>
+//       </span>
+//     );
+//   }
+//   return price;
+// };
 
 const PriceSection = ({ title, subtitle, items, itemKeyName }) => {
   const ref = useRef(null);
@@ -156,11 +156,12 @@ const PriceSection = ({ title, subtitle, items, itemKeyName }) => {
             key={index}
             className='flex pt-2 justify-between items-start md:items-center'
           >
-            <span className='text-sm lg:text-xl max-w-[70%]'>
+            <span className='text-sm lg:text-xl max-w-[50%]'>
               {item[itemKeyName]}
             </span>
             <span className='text-sm lg:text-xl text-right'>
-              {formatPrice(item.price)}
+              {/* {formatPrice(item.price)} */}
+              {item.price}
             </span>
           </div>
         ))}
