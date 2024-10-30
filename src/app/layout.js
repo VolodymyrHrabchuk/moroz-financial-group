@@ -13,12 +13,12 @@ export const metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://moroz-financial-group.vercel.app/",
+    url: "moroz-financial-group.vercel.app/",
     title: "Moroz Financial Group",
     description: "Your best financial services",
     images: [
       {
-        url: "https://moroz-financial-group.vercel.app/opengraph.webp",
+        url: "moroz-financial-group.vercel.app/opengraph.jpg",
         width: 1200,
         height: 630,
         alt: "Moroz Financial Group Full Team",
@@ -30,10 +30,10 @@ export const metadata = {
     card: "summary_large_image",
     title: "Moroz Financial Group",
     description: "Your best financial services",
-    images: ["https://moroz-financial-group.vercel.app/opengraph.webp"],
+    images: ["moroz-financial-group.vercel.app/opengraph.jpg"],
   },
   other: {
-    "og:logo": "https://moroz-financial-group.vercel.app/opengraph.webp",
+    "og:logo": "moroz-financial-group.vercel.app/opengraph.jpg",
   },
 };
 
