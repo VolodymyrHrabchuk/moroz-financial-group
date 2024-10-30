@@ -35,7 +35,7 @@ const Footer = () => {
           </div>
           <div className='flex space-x-4 mt-4'>
             <Link
-              href='https://www.instagram.com/YourInstagramProfile'
+              href='https://www.instagram.com/moroz_financial'
               target='_blank'
               rel='noopener noreferrer'
               className='hover:opacity-75'
