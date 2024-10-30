@@ -1,5 +1,3 @@
-// src/app/layout.js or src/pages/_app.js depending on your setup
-
 import "./globals.css";
 
 import { Nanum_Myeongjo } from "next/font/google";
@@ -15,12 +13,12 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://moroz-financial-group.vercel.app//',
+    url: 'https://moroz-financial-group.vercel.app/',
     title: 'Moroz Financial Group',
     description: 'Your best financial services',
     images: [
       {
-        url: '/fullteam.webp',
+        url: 'https://moroz-financial-group.vercel.app/opengraph.webp',
         width: 1200,
         height: 630,
         alt: 'Moroz Financial Group Full Team',
@@ -32,9 +30,10 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Moroz Financial Group',
     description: 'Your best financial services',
-    images: ['/fullteam.webp'],
+    images: ['https://moroz-financial-group.vercel.app/opengraph.webp'],
   },
 };
+
 
 const nanum = Nanum_Myeongjo({
   weight: ["400", "700", "800"],
