@@ -15,7 +15,7 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://moroz-financial-group.vercel.app//', // Replace with your actual URL
+    url: 'https://moroz-financial-group.vercel.app//',
     title: 'Moroz Financial Group',
     description: 'Your best financial services',
     images: [
