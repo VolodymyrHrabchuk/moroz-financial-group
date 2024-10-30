@@ -18,7 +18,7 @@ export const metadata = {
     description: "Your best financial services",
     images: [
       {
-        url: "moroz-financial-group.vercel.app/opengraph.jpg",
+        url: "/opengraph.jpg",
         width: 1200,
         height: 630,
         alt: "Moroz Financial Group Full Team",
@@ -30,10 +30,10 @@ export const metadata = {
     card: "summary_large_image",
     title: "Moroz Financial Group",
     description: "Your best financial services",
-    images: ["moroz-financial-group.vercel.app/opengraph.jpg"],
+    images: ["/opengraph.jpg"],
   },
   other: {
-    "og:logo": "moroz-financial-group.vercel.app/opengraph.jpg",
+    "og:logo": "/opengraph.jpg",
   },
 };
 
