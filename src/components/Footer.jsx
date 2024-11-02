@@ -27,10 +27,10 @@ const Footer = () => {
               Info@morozfinancial.com
             </Link>
             <Link
-              href='tel:+18478500085'
+              href='tel:+12245265170'
               className='text-white opacity-75 text-sm hover:opacity-100'
             >
-              +1 (847) 850-0085
+              +1 (224) 526-5170
             </Link>
           </div>
           <div className='flex space-x-4 mt-4'>
@@ -55,10 +55,10 @@ const Footer = () => {
           <p className='text-white opacity-75 text-sm'>9 AM - 6 PM CST</p>
           <p className='font-bold text-md'>Call</p>
           <Link
-            href='tel:+18478500085'
+            href='tel:+12245265170'
             className='text-white opacity-75 text-sm hover:opacity-100'
           >
-            +1 (847) 850-0085
+            +1 (224) 526-5170
           </Link>
           <p className='font-bold text-md'>Fax</p>
           <Link
@@ -87,7 +87,9 @@ const Footer = () => {
 
       {/* Bottom Section */}
       <div className='max-w-[1400px] mx-auto mt-12 mb-0 text-center text-xs'>
-        <span className='text-white opacity-45'>© Moroz Financial Group {currentYear}</span>
+        <span className='text-white opacity-45'>
+          © Moroz Financial Group {currentYear}
+        </span>
         <span className='mx-2 opacity-45'>|</span>
         <Link
           href='/privacy-policy'

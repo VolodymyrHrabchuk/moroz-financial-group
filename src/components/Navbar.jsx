@@ -11,6 +11,7 @@ const NAV_LINKS = [
   { href: "", label: "About Us", hasSubmenu: true },
   { href: "/calendar", label: "Calendar" },
   { href: "https://www.mytaxdocs.com/", label: "ClientXchange" },
+  { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact Us" },
 ];
 
