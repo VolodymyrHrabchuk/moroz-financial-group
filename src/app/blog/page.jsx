@@ -3,6 +3,10 @@ import { client, urlFor } from "../lib/sanity";
 import Image from "next/image";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Newsletter",
+};
+
 export const revalidate = 30;
 
 // Function to fetch posts for the current page

@@ -2,6 +2,10 @@ import ContactForm from "@/components/ContactForm";
 import Link from "next/link";
 import React from "react";
 
+export const metadata = {
+  title: "Contact Us",
+};
+
 const ContactPage = () => {
   return (
     <main className='pt-40  max-w-[1200px] mx-auto'>
