@@ -4,6 +4,12 @@ import Link from "next/link";
 import React from "react";
 import { PortableText } from "@portabletext/react";
 
+export async function generateMetadata({ params }) {
+  const data = await getData(params.slug);
+  return {
+    title: `Moroz Financial Group - ${data.title}`,
+  };
+}
 
 export const revalidate = 30;
 const getData = async (slug) => {
@@ -46,9 +52,9 @@ const ArticlePage = async ({ params }) => {
       </article>
 
       <div className='mt-10'>
-        <Link href="/blog">
+        <Link href='/blog'>
           <button className='bg-blue text-white py-2 px-4 rounded'>
-            Return to Blog
+            Return to Newsletter
           </button>
         </Link>
       </div>
