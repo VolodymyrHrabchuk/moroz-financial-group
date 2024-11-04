@@ -8,20 +8,18 @@ import { ReactLenis } from "@/utils/lenis";
 import "lenis/dist/lenis.css";
 import Footer from "@/components/Footer";
 import Template from "./template";
-import { keywords } from "../../moroz-blog/dist/vendor/react/package.json-4bea9951.mjs";
 
 export const metadata = {
   title: {
     default: "Moroz Financial Group | Accounting & Tax Services",
     template: "%s | Accounting & Tax Services",
-    keywords: ["Moroz Financial Group", "Accounting & Tax Services"],
   },
   description:
     "High quality accounting and tax services, helping you solve your financial issues effortlessly.",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: process.env.NEXT_WEBSITE_ADDRESS,
+    url: "https://moroz-financial-group.vercel.app/",
     title: "Moroz Financial Group | Accounting & Tax Services",
     description:
       "High quality accounting and tax services, helping you solve your financial issues effortlessly.",
