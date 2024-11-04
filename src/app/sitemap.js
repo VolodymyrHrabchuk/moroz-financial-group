@@ -1,14 +1,13 @@
 import { client } from "./lib/sanity";
 
 export default async function sitemap() {
-  async function getPosts(page, limit) {
-    const start = (page - 1) * limit;
-    const end = start + limit;
-    const query = `*[_type == "blog"] | order(_createdAt desc) [${start}...${end}] {
+  async function getPosts() {
+    const query = `*[_type == "blog"] | order(_createdAt desc)  {
       title,
       smallDescription,
       "currentSlug": slug.current,
       mainImage,
+      _updatedAt, 
     }`;
     const data = await client.fetch(query);
     return data;
