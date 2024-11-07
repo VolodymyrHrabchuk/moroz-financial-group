@@ -3,34 +3,61 @@
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { useState, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion"; // Import AnimatePresence
 import SuccessModal from "./SuccesModal";
+
+import ReCAPTCHA from "react-google-recaptcha"; // Import reCAPTCHA
 
 export default function ContactForm() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [captchaValue, setCaptchaValue] = useState(null); // State to store CAPTCHA value
+  const [showCaptcha, setShowCaptcha] = useState(false); // State to control CAPTCHA visibility
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
+    setError,
+    clearErrors,
+    getValues, // To retrieve form values
   } = useForm();
 
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const isInView = useInView(sectionRef, { once: true, rootMargin: "-100px" }); // Use 'rootMargin' instead of 'margin'
 
-  const onSubmit = async (data) => {
+  // Define animation variants for CAPTCHA
+  const captchaVariants = {
+    hidden: { opacity: 0, height: 0, overflow: 'hidden' },
+    visible: { opacity: 1, height: 'auto', overflow: 'visible' },
+    exit: { opacity: 0, height: 0, overflow: 'hidden' },
+  };
+
+  // Handler for CAPTCHA change
+  const handleCaptchaChange = (value) => {
+    setCaptchaValue(value);
+    if (value) {
+      clearErrors("captcha");
+      // Proceed to submit the form since CAPTCHA is verified
+      onFinalSubmit(getValues(), value);
+    }
+  };
+
+  // Final submission handler after CAPTCHA is verified
+  const onFinalSubmit = async (data, captchaToken) => {
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, captcha: captchaToken }), // Include CAPTCHA token
       });
 
       if (response.ok) {
         setIsModalOpen(true);
         reset();
+        setCaptchaValue(null); // Reset CAPTCHA
+        setShowCaptcha(false); // Hide CAPTCHA with animation
       } else {
         const errorData = await response.json();
         alert(`Failed to send message: ${errorData.error}`);
@@ -38,6 +65,22 @@ export default function ContactForm() {
     } catch (error) {
       console.error("Error:", error);
       alert("An error occurred while sending the message.");
+    }
+  };
+
+  // Primary submission handler
+  const onSubmit = (data) => {
+    if (!showCaptcha) {
+      // First submission attempt: Show CAPTCHA
+      setShowCaptcha(true);
+    } else {
+      // If CAPTCHA is already shown but not verified
+      if (!captchaValue) {
+        setError("captcha", {
+          type: "manual",
+          message: "Please verify that you are not a robot.",
+        });
+      }
     }
   };
 
@@ -71,7 +114,7 @@ export default function ContactForm() {
                 id='firstName'
                 type='text'
                 {...register("firstName", { required: true })}
-                className='w-full p-2 border border-gray-300 rounded appearance-none focus:outline-none focus:ring-1 focus:ring-blue'
+                className='w-full p-2 border border-gray-300 rounded appearance-none focus:outline-none focus:ring-1 focus:ring-blue-500' // Fixed class
               />
               {errors.firstName && (
                 <span className='text-red-600'>First name is required</span>
@@ -85,7 +128,7 @@ export default function ContactForm() {
                 id='lastName'
                 type='text'
                 {...register("lastName", { required: true })}
-                className='w-full p-2 border border-gray-300 rounded appearance-none focus:outline-none focus:ring-1 focus:ring-blue'
+                className='w-full p-2 border border-gray-300 rounded appearance-none focus:outline-none focus:ring-1 focus:ring-blue-500' // Fixed class
               />
               {errors.lastName && (
                 <span className='text-red-600'>Last name is required</span>
@@ -104,7 +147,7 @@ export default function ContactForm() {
               id='email'
               type='email'
               {...register("email", { required: true })}
-              className='w-full p-2 border border-gray-300 rounded appearance-none focus:outline-none focus:ring-1 focus:ring-blue'
+              className='w-full p-2 border border-gray-300 rounded appearance-none focus:outline-none focus:ring-1 focus:ring-blue-500' // Fixed class
             />
             {errors.email && (
               <span className='text-red-600'>Email is required</span>
@@ -121,18 +164,43 @@ export default function ContactForm() {
             <textarea
               id='message'
               {...register("message", { required: true })}
-              className='w-full p-2 border border-gray-300 rounded appearance-none focus:outline-none focus:ring-1 focus:ring-blue'
+              className='w-full p-2 border border-gray-300 rounded appearance-none focus:outline-none focus:ring-1 focus:ring-blue-500' // Fixed class
               rows='4'
             ></textarea>
             {errors.message && (
               <span className='text-red-600'>Message is required</span>
             )}
           </motion.div>
+
+          {/* CAPTCHA Section - Conditionally Rendered with Animation */}
+          <AnimatePresence>
+            {showCaptcha && (
+              <motion.div
+                key="captcha"
+                variants={captchaVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                transition={{ duration: 0.5 }}
+                className='mt-4'
+              >
+                <ReCAPTCHA
+                  sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} // Ensure this is set correctly
+                  onChange={handleCaptchaChange}
+                  hl='en'
+                />
+                {errors.captcha && (
+                  <span className='text-red-600'>{errors.captcha.message}</span>
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
+
           <motion.button
             type='submit'
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
             whileHover={{
               scale: 1.05,
               boxShadow: "0px 0px 8px rgba(255, 255, 255, 0.8)",

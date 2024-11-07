@@ -72,15 +72,16 @@ const Footer = () => {
         {/* Right Section */}
         <div className='flex flex-col md:flex-row md:items-center gap-6 text-center md:text-left md:ml-12'>
           <iframe
-            src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.815323376733!2d-87.62780048459373!3d41.88288927922274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd3306b1b2a7b%3A0x9c5e5d9f8c8e4b1d!2s200%20N%20Green%20St%2C%20Chicago%2C%20IL%2060607%2C%20USA!5e0!3m2!1sen!2sin!4v1663242288941!5m2!1sen!2sin'
+            src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1275.1016319467283!2d-87.64975149647931!3d41.88624718539067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e2cd00ef472b7%3A0x80654fb20993263f!2zMjIwIE4gR3JlZW4gU3QsIENoaWNhZ28sIElMIDYwNjA3LCDQodC_0L7Qu9GD0YfQtdC90ZYg0KjRgtCw0YLQuCDQkNC80LXRgNC40LrQuA!5e0!3m2!1suk!2sua!4v1730988079754!5m2!1suk!2sua'
             className='rounded-md w-full h-64 md:w-2/3 md:h-64'
             style={{ border: 0 }}
             allowFullScreen={true}
             loading='lazy'
-            referrerPolicy='no-referrer-when-downgrade'
+            referrerpolicy='no-referrer-when-downgrade'
           ></iframe>
+
           <p className='text-left font-bold text-md text-white'>
-            200 N Green St, Suite 521, Chicago, IL 60607
+            220 N Green St, Suite 521, Chicago, IL 60607
           </p>
         </div>
       </div>
