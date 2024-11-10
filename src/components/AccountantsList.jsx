@@ -7,7 +7,7 @@ import { motion, useInView } from "framer-motion";
 const accountants = [
   {
     name: "Dmitry Moroz",
-    title: "CPA Partner",
+    title: "Managing Principal",
     email: "dmitrymoroz@morozfinancial.com",
     imgSrc: "/moroz.webp",
   },
@@ -19,13 +19,13 @@ const accountants = [
   },
   {
     name: "Iosif Vardoev",
-    title: "Tax Preparer",
+    title: "Financial Analyst",
     email: "iosifvardoev@morozfinancial.com",
     imgSrc: "/vardoev.webp",
   },
   {
     name: "Lidiia Danyliak",
-    title: "Tax Preparer",
+    title: "Lead Tax Preparer",
     email: "lidiiadanyliak@morozfinancial.com",
     imgSrc: "/danyliak.webp",
   },
@@ -43,13 +43,13 @@ const accountants = [
   },
   {
     name: "Assylbek Myrzagali",
-    title: "Financial Analyst",
+    title: "Financial Statement Specialist",
     email: "assylbekmyrzagali@morozfinancial.com",
     imgSrc: "/myrzagali.webp",
   },
   {
     name: "Elizaveta Zukhar",
-    title: "Secretary",
+    title: "Administrator",
     email: "elizavetazukhar@morozfinancial.com",
     imgSrc: "/zukhar-l.webp",
   },

@@ -3,11 +3,10 @@
 import { Resend } from "resend";
 import ContactEmail from "@/emails/ContactEmail";
 import { NextResponse } from "next/server";
-import rateLimiter from "@/app/lib/rateLimiter"; // Ensure the path is correct
+import rateLimiter from "@/app/lib/rateLimiter";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-// Function to verify CAPTCHA token
 const verifyCaptcha = async (token) => {
   const secret = process.env.RECAPTCHA_SECRET_KEY;
   const response = await fetch(
@@ -34,7 +33,8 @@ export async function POST(request) {
     await rateLimiter.consume(ip);
 
     // Parse the incoming request
-    const { firstName, lastName, email, message, captcha } = await request.json();
+    const { firstName, lastName, email, message, captcha } =
+      await request.json();
 
     // Verify CAPTCHA
     const isCaptchaValid = await verifyCaptcha(captcha);
@@ -48,7 +48,7 @@ export async function POST(request) {
     // Send the email using Resend
     const data = await resend.emails.send({
       from: "Acme <onboarding@resend.dev>", // Replace with your verified sender
-      to: "hrbchk2804@gmail.com", // Your receiving email address
+      to: "dmitrymoroz@morozfinancial.com", // Your receiving email address
       subject: "New Contact Form Submission",
       react: (
         <ContactEmail

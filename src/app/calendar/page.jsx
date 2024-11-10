@@ -46,9 +46,8 @@ const highlightedDates = [15, 31, 30];
 export default function TaxCalendar() {
   const [activeDate, setActiveDate] = useState(null);
   const [hoveredDate, setHoveredDate] = useState(null);
-  const [currentMonth, setCurrentMonth] = useState(0);
+  const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
 
-  // Update the document title based on the current month
   useEffect(() => {
     document.title = `${months[currentMonth]} Tax Calendar | Moroz Financial Group`;
   }, [currentMonth]);
@@ -103,11 +102,11 @@ export default function TaxCalendar() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.8 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute bottom-full left-1/2 transform -translate-x-1/2 z-20 bg-white p-4 rounded-lg shadow-xl text-black text-sm sm:text-base w-64 sm:w-80"
+                  className='absolute bottom-full left-1/2 transform -translate-x-1/2 z-20 bg-white p-4 rounded-lg shadow-xl text-black text-sm sm:text-base w-64 sm:w-80'
                 >
                   {events.map((event, index) => (
-                    <div key={index} className="mb-2">
-                      <p className="font-bold">
+                    <div key={index} className='mb-2'>
+                      <p className='font-bold'>
                         {event.month} {i}
                       </p>
                       {event.text.split("\n").map((line, idx) => (
@@ -137,41 +136,41 @@ export default function TaxCalendar() {
   };
 
   return (
-    <main className="max-w-[860px] mx-auto px-4 sm:px-6 lg:px-8 py-40 sm:py-15 mt-16">
+    <main className='max-w-[860px] mx-auto px-4 sm:px-6 lg:px-8 py-40 sm:py-15 mt-16'>
       <motion.h1
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="text-5xl text-left sm:text-center font-bold leading-snug text-blue mb-5 sm:mb-10"
+        className='text-5xl text-left sm:text-center font-bold leading-snug text-blue mb-5 sm:mb-10'
       >
         Tax Calendar
       </motion.h1>
 
-      <div className="flex justify-between items-center mb-6">
+      <div className='flex justify-between items-center mb-6'>
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => handleMonthChange("prev")}
-          className="text-sm bg-gray-300 hover:bg-gray-500 text-black font-bold py-1 px-3 rounded"
+          className='text-sm bg-gray-300 hover:bg-gray-500 text-black font-bold py-1 px-3 rounded'
         >
           Previous
         </motion.button>
-        <h2 className="text-xl sm:text-2xl font-bold text-blue mb-4">
+        <h2 className='text-xl sm:text-2xl font-bold text-blue mb-4'>
           {months[currentMonth]}
         </h2>
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => handleMonthChange("next")}
-          className="text-sm bg-gray-300 hover:bg-gray-500 text-black font-bold py-1 px-3 rounded"
+          className='text-sm bg-gray-300 hover:bg-gray-500 text-black font-bold py-1 px-3 rounded'
         >
           Next
         </motion.button>
       </div>
 
       <motion.div
-        initial="hidden"
-        animate="visible"
+        initial='hidden'
+        animate='visible'
         variants={{
           hidden: {
             opacity: 0,
@@ -186,7 +185,7 @@ export default function TaxCalendar() {
             },
           },
         }}
-        className="grid grid-cols-7 gap-1 mb-2"
+        className='grid grid-cols-7 gap-1 mb-2'
       >
         {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
           <motion.div
@@ -195,7 +194,7 @@ export default function TaxCalendar() {
               hidden: { opacity: 0, y: 50 },
               visible: { opacity: 1, y: 0 },
             }}
-            className="text-center font-bold text-sm"
+            className='text-center font-bold text-sm'
           >
             {day}
           </motion.div>
@@ -203,8 +202,8 @@ export default function TaxCalendar() {
       </motion.div>
 
       <motion.div
-        initial="hidden"
-        animate="visible"
+        initial='hidden'
+        animate='visible'
         variants={{
           hidden: { opacity: 0, y: 50 },
           visible: {
@@ -216,7 +215,7 @@ export default function TaxCalendar() {
             },
           },
         }}
-        className="grid grid-cols-7 gap-1"
+        className='grid grid-cols-7 gap-1'
       >
         {renderCalendarDays()}
       </motion.div>
