@@ -17,6 +17,7 @@ const Hero = () => {
           backgroundImage: "url('/hero-mob.webp')",
         },
       }}
+      id='hero'
     >
       <div className='flex flex-col items-center max-w-[1200px] mx-auto px-2 sm:px-6 lg:px-8 pt-40 mt-32 translate-y-[-140px]'>
         <AnimatedText>
@@ -44,7 +45,7 @@ const Hero = () => {
               }}
               className='text-blue bg-white px-6 py-2 md:px-8 md:py-3 mt-8 rounded-xl inline-block cursor-pointer'
             >
-              Contact Us
+              Book Free Consultation
             </motion.div>
           </AnimatedText>
         </Link>

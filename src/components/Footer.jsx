@@ -26,12 +26,12 @@ const Footer = () => {
             >
               Info@morozfinancial.com
             </Link>
-            <Link
+            {/* <Link
               href='tel:+12245265170'
               className='text-white opacity-75 text-sm hover:opacity-100'
             >
               +1 (224) 526-5170
-            </Link>
+            </Link> */}
           </div>
           <div className='flex space-x-4 mt-4'>
             <Link

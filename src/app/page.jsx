@@ -1,6 +1,7 @@
 import ContactForm from "@/components/ContactForm";
 import CountSection from "@/components/CountSection";
 import Hero from "@/components/Hero";
+import { ReviewsGrid } from "@/components/ReviewsGrid";
 import ServicesSection from "@/components/ServicesSection";
 import TextSection from "@/components/TextSection";
 import Link from "next/link";
@@ -12,6 +13,8 @@ export default function Home() {
       <TextSection />
       <CountSection />
       <ServicesSection />
+
+      <ReviewsGrid />
       <>
         <ContactForm />
         <p className='text-2xl md:text-5xl font-bold -translate-y-5 pb-12 text-center '>
