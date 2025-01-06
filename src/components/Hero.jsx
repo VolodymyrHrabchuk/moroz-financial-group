@@ -45,7 +45,7 @@ const Hero = () => {
               }}
               className='text-blue bg-white px-6 py-2 md:px-8 md:py-3 mt-8 rounded-xl inline-block cursor-pointer'
             >
-              Book Free Consultation
+              Free Consultation
             </motion.div>
           </AnimatedText>
         </Link>

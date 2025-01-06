@@ -27,9 +27,9 @@ export default function ContactForm() {
 
   // Define animation variants for CAPTCHA
   const captchaVariants = {
-    hidden: { opacity: 0, height: 0, overflow: 'hidden' },
-    visible: { opacity: 1, height: 'auto', overflow: 'visible' },
-    exit: { opacity: 0, height: 0, overflow: 'hidden' },
+    hidden: { opacity: 0, height: 0, overflow: "hidden" },
+    visible: { opacity: 1, height: "auto", overflow: "visible" },
+    exit: { opacity: 0, height: 0, overflow: "hidden" },
   };
 
   // Handler for CAPTCHA change
@@ -176,11 +176,11 @@ export default function ContactForm() {
           <AnimatePresence>
             {showCaptcha && (
               <motion.div
-                key="captcha"
+                key='captcha'
                 variants={captchaVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
+                initial='hidden'
+                animate='visible'
+                exit='exit'
                 transition={{ duration: 0.5 }}
                 className='mt-4'
               >
@@ -207,7 +207,7 @@ export default function ContactForm() {
             }}
             className='text-white bg-blue w-full px-6 py-2 md:px-6 md:py-3 mt-8 rounded-xl inline-block cursor-pointer'
           >
-            Send Message
+            Free consultation
           </motion.button>
         </form>
       </motion.div>

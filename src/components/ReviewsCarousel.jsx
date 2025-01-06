@@ -22,7 +22,7 @@ export function ReviewsCarousel() {
   return (
     <div className='relative max-w-[1400px] mx-auto px-6'>
       <AnimatedText>
-        <h2 className='text-3xl sm:text-4xl md:text-5xl text-center leading-snug text-primary mb-6 font-bold'>
+        <h2 className='text-3xl sm:text-4xl md:text-5xl text-center leading-snug text-primary mb-10 font-bold'>
           Testimonials About Us
         </h2>
       </AnimatedText>

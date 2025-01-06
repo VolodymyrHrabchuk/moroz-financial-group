@@ -10,7 +10,7 @@ const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "", label: "About Us", hasSubmenu: true },
   { href: "/calendar", label: "Calendar" },
-  { href: "https://www.mytaxdocs.com/", label: "ClientXchange" },
+  { href: "https://morozfinancial.taxdome.com/", label: "Document Portal" },
   { href: "/blog", label: "Newsletter" },
   { href: "/contact", label: "Contact Us" },
 ];
