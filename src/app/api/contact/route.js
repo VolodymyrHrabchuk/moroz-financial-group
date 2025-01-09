@@ -33,7 +33,7 @@ export async function POST(request) {
     await rateLimiter.consume(ip);
 
     // Parse the incoming request
-    const { firstName, lastName, email, message, captcha } =
+    const { firstName, lastName, email, phone, message, captcha } =
       await request.json();
 
     // Verify CAPTCHA
@@ -55,6 +55,7 @@ export async function POST(request) {
           firstName={firstName}
           lastName={lastName}
           email={email}
+          phone={phone}
           message={message}
         />
       ),

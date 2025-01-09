@@ -10,7 +10,7 @@ import {
   Hr,
 } from "@react-email/components";
 
-const ContactEmail = ({ firstName, lastName, email, message }) => (
+const ContactEmail = ({ firstName, lastName, email, phone, message }) => (
   <Html>
     <Head />
     <Preview>New Contact Form Submission</Preview>
@@ -19,7 +19,9 @@ const ContactEmail = ({ firstName, lastName, email, message }) => (
         <Heading style={h1}>New Contact Form Submission</Heading>
         <Hr style={hr} />
         <div style={contentWrapper}>
-          <Heading as="h2" style={h2}>Contact Information</Heading>
+          <Heading as='h2' style={h2}>
+            Contact Information
+          </Heading>
           <Text style={paragraph}>
             <strong>First Name:</strong> {firstName}
           </Text>
@@ -29,8 +31,13 @@ const ContactEmail = ({ firstName, lastName, email, message }) => (
           <Text style={paragraph}>
             <strong>Email:</strong> {email}
           </Text>
+          <Text style={paragraph}>
+            <strong>Phone:</strong> {phone}
+          </Text>
           <Hr style={hr} />
-          <Heading as="h2" style={h2}>Message</Heading>
+          <Heading as='h2' style={h2}>
+            Message
+          </Heading>
           <Text style={paragraph}>{message}</Text>
         </div>
       </Container>
@@ -42,7 +49,8 @@ export default ContactEmail;
 
 const main = {
   backgroundColor: "#f6f9fc",
-  fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
+  fontFamily:
+    '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
   padding: "20px 0",
 };
 

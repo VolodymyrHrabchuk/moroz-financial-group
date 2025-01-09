@@ -156,6 +156,24 @@ export default function ContactForm() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.5, delay: 0.25 }}
+          >
+            <label htmlFor='phone' className='block mb-1 text-gray-700'>
+              Phone number
+            </label>
+            <input
+              id='phone'
+              type='tel'
+              {...register("phone", { required: true })}
+              className='w-full p-2 border border-gray-300 rounded appearance-none focus:outline-none focus:ring-1 focus:ring-blue-500'
+            />
+            {errors.phone && (
+              <span className='text-red-600'>Phone number is required</span>
+            )}
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
             <label htmlFor='message' className='block mb-1 text-gray-700'>
